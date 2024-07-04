@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0skhojt7xsun"]
+
+[ext_resource type="Shader" path="res://new_shader.gdshader" id="1_42w5x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yawbf"]
+render_priority = 0
+shader = ExtResource("1_42w5x")
+shader_parameter/out_color = Vector4(0, 0.2, 1, 1)
+shader_parameter/amount = 0.705
+shader_parameter/beer_factor = 0.2
+
+[sub_resource type="GDScript" id="GDScript_m41p0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mtcl2"]
+size = Vector2(100, 100)
+subdivide_width = 50
+subdivide_depth = 50
+script = SubResource("GDScript_m41p0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6d4iy"]
+render_priority = 1
+shader = ExtResource("1_42w5x")
+shader_parameter/out_color = Vector4(0, 0.2, 1, 1)
+shader_parameter/amount = 0.8
+shader_parameter/beer_factor = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_j2ut2"]
+size = Vector3(4, 100, 4)
+
+[node name="World" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0190081, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(99.9892, 1.46951, 0, -1.46951, 99.9892, 0, 0, 0, 100, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_yawbf")
+mesh = SubResource("PlaneMesh_mtcl2")
+surface_material_override/0 = SubResource("ShaderMaterial_6d4iy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -27.2324, 0.00309753)
+mesh = SubResource("BoxMesh_j2ut2")
